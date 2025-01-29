@@ -1,0 +1,23 @@
+#matriz {
+    display: grid;
+    grid-template-columns: repeat(10, 30px);
+    gap: 2px;
+}
+
+.celula {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    font-size: 14px;
+}
+
+.certa {
+    background-color: lightgreen;
+}
+
+.errada {
+    background-color: lightcoral;
+}
