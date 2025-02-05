@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palavra Cruzada</title>
     <link rel="stylesheet" href="styles/style.css">
-    
+
 </head>
+
 <body>
     <section>
+        <h1>Palavra Cruzada</h1>
+        <h3>Tema: Harry Potter</h3>
         <div id="board" class="board"></div>
+
+        <div id="timer" class="timer">Tempo: 05:00</div>
+        <button id="startPause">Iniciar</button>
+
         <div class="dicas">
             <div class="across">
                 <h2>Horizontal</h2>
                 <ul>
-                    <li>1. Casa de Hogwarts conhecida por sua coragem (8)</li>
-                    <li>3. Feitiço que conjura luz (5)</li>
-                    <li>5. Criatura mágica que guarda tesouros (6)</li>
-                    <li>7. Poção que faz a pessoa adormecer (6)</li>
-                    <li>9. Animal de estimação de Hermione (4)</li>
+                    <li>1. Guardião das florestas de Hogwarts (6)</li>
+                    <li>3. Feitiço da morte (5)</li>
+                    <li>4. Estudante excêntrica da Corvinal (4)</li>
+                    <li>5. O famoso bruxo da cicatriz (5)</li>
+                    <li>6. Rival de Harry, pertencente a Sonserina (6)</li>
+                    <li>7. Melhor amigo de Harry, ruivo e leal (6)</li>
+                    <li>9. Feitiço usado para repelir dementadores (8)</li>
                 </ul>
             </div>
-    
+
             <div class="down">
                 <h2>Vertical</h2>
                 <ul>
-                    <li>2. Feitiço para desarmar o oponente (8)</li>
-                    <li>4. Professor de Defesa Contra as Artes das Trevas (6)</li>
-                    <li>6. Objeto usado para voar (5)</li>
-                    <li>8. Criatura mágica que cospe fogo (6)</li>
-                    <li>10. Casa de Hogwarts conhecida por sua astúcia (8)</li>
+                    <li>2. Objeto mágico usado para armazenar partes da alma (7)</li>
+                    <li>8. Criatura sombria que se alimenta da felicidade (10)</li>
+                    <li>9. Feitiço para destrancar portas (9)</li>
                 </ul>
             </div>
         </div>
     </section>
     <div class="botoes">
-        <button onclick="key_check()">Validar</button>
+        <button onclick="verificar()">Validar</button>
         <button onclick="limparTabuleiro()">Limpar</button>
     </div>
 
     <script src="script/scripts.js"></script>
 </body>
+
 </html>

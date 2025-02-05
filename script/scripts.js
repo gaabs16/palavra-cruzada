@@ -8,30 +8,42 @@
 const board = document.getElementById('board');
 
 const values = [
-    "1111111111",
-    "1000101010",
-    "1011101011",
-    "1010001010",
-    "1111011110",
-    "1010100010",
-    "0010111110",
-    "1000100010",
-    "1110111101",
-    "1000101000"
+    "1111110001",
+    "1011111001",
+    "1011110001",
+    "1010000001",
+    "1011111001",
+    "1010000001",
+    "1011111101",
+    "0010000001",
+    "0011111101",
+    "0111111111"
 ];
 
 const ans_key = [
-    "GRIFINORIA-",
-    "----L---U--",
-    "--LUMOS---A",
-    "----A---R--",
-    "--DRAGAO---",
-    "----C---O--",
-    "--SONIFERO",
-    "----G---A--",
-    "--GATO-----",
-    "----T---R--"
+    "HAGRID---D-", 
+    "O-AVADA--E-",
+    "R-LUNA---M-",
+    "C-O------E-",
+    "R-HARRY--N-",
+    "U-O------T-",
+    "X-MALFOY-A-",
+    "--O------D-",
+    "--RONALD-O-",
+    "-PATRONUMR-"
 ];
+
+const span_value = {
+    "0,0": "1", 
+    "1,0": "2",
+    "1,2": "3", 
+    "0,9": "8", 
+    "2,2": "4", 
+    "4,2": "5", 
+    "6,2": "6", 
+    "8,2": "7", 
+    "9,1": "9"
+}
 
 let current = null;
 
@@ -44,8 +56,12 @@ function criarTabuleiro() {
             cell.setAttribute('data-linha', linha);
             cell.setAttribute('data-coluna', coluna);
 
-            if (values[linha][coluna] === '1' && ans_key[linha][coluna] !== '-') {
-                cell.textContent = ans_key[linha][coluna];
+            const posicao = linha + "," + coluna;
+            if (span_value[posicao]) {
+                const numero = document.createElement('span');
+                numero.textContent = span_value[posicao];
+                numero.classList.add('numero-canto');
+                cell.appendChild(numero);
             }
 
             cell.addEventListener('click', () => myclick(cell));
@@ -112,7 +128,7 @@ function moverPara(novaLinha, novaColuna) {
     }
 }
 
-function key_check() {
+function verificar() {
     const cells = document.querySelectorAll('.cell.white');
     cells.forEach(cell => {
         const linha = cell.getAttribute('data-linha');
@@ -133,3 +149,40 @@ function limparTabuleiro() {
         cell.textContent = "";
     });
 }
+
+let tempoEmSegundos = 300;
+let intervalo = null;
+const timerElemento = document.getElementById("timer");
+const botaoStartPause = document.getElementById("startPause");
+
+function formatarTempo(segundos) {
+    const minutos = Math.floor(segundos / 60);
+    const segundosRestantes = segundos % 60;
+    return `${String(minutos).padStart(2, '0')}:${String(segundosRestantes).padStart(2, '0')}`;
+}
+
+function atualizarTempo() {
+    timerElemento.textContent = `Tempo: ${formatarTempo(tempoEmSegundos)}`;
+}
+
+function iniciarOuPausar() {
+    if (intervalo) {
+        clearInterval(intervalo);
+        intervalo = null;
+        botaoStartPause.textContent = "Iniciar";
+    } else {
+        intervalo = setInterval(() => {
+            if (tempoEmSegundos > 0) {
+                tempoEmSegundos--;
+                atualizarTempo();
+            } else {
+                clearInterval(intervalo);
+                alert("Tempo esgotado!");
+            }
+        }, 1000);
+        botaoStartPause.textContent = "Pausar";
+    }
+}
+
+botaoStartPause.addEventListener("click", iniciarOuPausar);
+atualizarTempo();
