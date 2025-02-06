@@ -36,16 +36,17 @@ const ans_key = [
 const span_value = {
     "0,0": "1",
     "1,0": "2",
-    "1,2": "3",
+    "1,2": "9",
     "0,9": "8",
+    "1,3": "3",
     "2,2": "4",
     "4,2": "5",
     "6,2": "6",
     "8,2": "7",
-    "9,1": "9"
+    "9,1": "10"
 }
 
-let tempoEmSegundos = 300;
+let tempoEmSegundos = 600;
 let intervalo = null;
 const timerElemento = document.getElementById("timer");
 const botaoStartPause = document.getElementById("startPause");
@@ -185,9 +186,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    iniciarOuPausar();
-    limparTabuleiro();
-    verificar();
     botaoStartPause.addEventListener("click", iniciarOuPausar);
     atualizarTempo();
 });
